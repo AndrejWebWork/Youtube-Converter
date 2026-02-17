@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert YouTube videos to high-quality MP3 audio files with stunning animations">
+  <title>MP3 Downloader but animated</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <!-- Legal Disclaimer Modal -->
+  <div id="disclaimer-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true">
+    <div class="modal-content">
+      <h2 id="modal-title">⚠️ Important Notice</h2>
+      <p>This tool is for <strong>educational and personal use only</strong>. Please respect YouTube's Terms of Service and copyright laws. Only download content you have permission to use.</p>
+      <button id="accept-disclaimer" class="btn-primary">I Understand</button>
+    </div>
+  </div>
+
+  <!-- Theme Toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle Theme">
+    <span class="theme-icon">🌙</span>
+  </button>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="particles" id="particles"></div>
+    <div class="container">
+      <h1 class="logo">
+        <span class="logo-text">MP3 Downloader</span>
+        <span class="logo-subtitle">but animated</span>
+      </h1>
+      
+      <!-- Search Form -->
+      <form id="search-form" class="search-form" role="search">
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="url-input" 
+            class="url-input" 
+            placeholder="Paste YouTube URL here..."
+            aria-label="YouTube video URL"
+            autocomplete="off"
+            required
+          >
+          <button type="submit" class="btn-search" aria-label="Search video" title="Convert to MP3">
+            <span class="btn-text">Convert</span>
+            <span class="btn-glow"></span>
+          </button>
+        </div>
+        <div class="quality-selector">
+          <label for="format">Format:</label>
+          <select id="format" name="format">
+            <option value="mp3" selected>MP3</option>
+            <option value="mp4">MP4</option>
+          </select>
+          <label for="quality">Quality:</label>
+          <select id="quality" name="quality">
+            <option value="128">128 kbps</option>
+            <option value="256">256 kbps</option>
+            <option value="320" selected>320 kbps (Best)</option>
+          </select>
+          <select id="resolution" name="resolution" style="display:none;">
+            <option value="360">360p</option>
+            <option value="480">480p</option>
+            <option value="720" selected>720p HD</option>
+            <option value="1080">1080p Full HD</option>
+            <option value="1440">1440p 2K</option>
+          </select>
+        </div>
+      </form>
+
+      <!-- Error Message -->
+      <div id="error-toast" class="error-toast" role="alert" aria-live="assertive"></div>
+    </div>
+  </section>
+
+  <!-- Results Section -->
+  <section class="results" id="results" aria-live="polite">
+    <div class="container">
+      <div id="video-card" class="video-card">
+        <img id="video-thumbnail" class="video-thumbnail" src="" alt="Video thumbnail" loading="lazy">
+        <div class="video-info">
+          <h2 id="video-title" class="video-title"></h2>
+          <p id="video-duration" class="video-duration"></p>
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Download Section -->
+      <div id="download-section" class="download-section">
+        <button id="download-mp3" class="btn-download">
+          <span class="download-icon">🎵</span>
+          <span class="download-text">Download</span>
+        </button>
+        <button id="convert-again" class="btn-secondary" style="display:none;">Convert Again</button>
+        <div id="loading-spinner" class="loading-spinner">
+          <div class="spinner"></div>
+          <p>Converting...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- History Section -->
+  <section class="history" id="history">
+    <div class="container">
+      <h3>Recent Downloads</h3>
+      <ul id="history-list" class="history-list"></ul>
+      <button id="clear-history" class="btn-secondary">Clear History</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2024 MP3 Downloader but animated. Educational use only.</p>
+      <nav aria-label="Footer navigation">
+        <a href="#about">About</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Confetti Container -->
+  <div id="confetti-container" class="confetti-container"></div>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
